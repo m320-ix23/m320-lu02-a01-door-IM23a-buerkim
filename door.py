@@ -1,14 +1,22 @@
+"""
+Dieses Modul definiert Klassen zur Simulation einer
+Tür mit Verriegelungs- und Entriegelungsmechanismen.
+Es enthält die Klasse Door, die den Zustand der Tür (offen, geschlossen, verriegelt) verwaltet,
+und die Klasse DoorLock, die für die Verriegelungs- und Entriegelungsvorgänge zuständig ist.
+"""
+
 class Door:
     """
     Diese Klasse beschreibt eine Türe mit der Eigenschaft color (Farbe) und den Zuständen
     door_is_open (für geöffnete Türe) sowie door_is_locked (für verriegelte Türe).
     Die Türe überwacht die beiden Zustände und verhindert so Aktionen, die nicht möglich sind.
-    Das verriegeln selber delegiert die Türe an ein Objekt vom Typ Door_lock (Türschloss).
+    Das Verriegeln selber delegiert die Türe an ein Objekt vom Typ Door_lock (Türschloss).
     """
 
     # Ich nehme eine beliebige Änderung in den Kommentaren vor.
     # Mit dem Keyword def wird eine Funktion bzw. eben ein Konstruktor deklariert.
-    # Der Konstruktor trägt IMMER den Namen __init__ und weist als ersten Parameter den Wert self auf.
+    # Der Konstruktor trägt IMMER den Namen __init__
+    # und weist als ersten Parameter den Wert self auf.
     # Danach folgen die Übergabeparameter, deren Werte dann den Attributen zugewiesen werden.
     # Attribute können aber auch mit einem fixen Wert initialisiert werden.
     # Konstruktoren werden als Erstes im Programm angeschrieben.
@@ -30,33 +38,34 @@ class Door:
     # Danach folgen Methoden, die auf ein Ereignis reagieren
     def open_the_door(self):
         """
-        Methode für das öffnen der Türe.
+        Methode für das Öffnen der Türe.
         Das ist aber nur möglich, wenn die Türe nicht verriegelt ist.
         """
-        if self._door_is_locked == False:
+        if self._door_is_locked is False:
             self._door_is_open = True
 
     def close_the_door(self):
         """
         Methode für das schliessen der Türe.
-        Das geht immer, auch wenn die Türe schon geschlossen oder verriegelt ist. Der Zustand ändert dann nämlich nicht.
+        Das geht immer, auch wenn die Türe schon geschlossen oder
+        verriegelt ist. Der Zustand ändert dann nämlich nicht.
         """
         self._door_is_open = False
 
     def lock_the_door(self):
         """
-        Methode für das verriegeln der Türe.
+        Methode für das Verriegeln der Türe.
         Das ist nur möglich, wenn die Türe nicht offen ist.
-        Für das verriegeln ist aber das Türschloss zuständig. Es weiss wie das geht.
+        Für das Verriegeln ist aber das Türschloss zuständig. Es weiß, wie das geht.
         """
-        if self._door_is_open == False:
+        if self._door_is_open is False:
             self._door_is_locked = self._the_door_lock.lock()
 
     def unlock_the_door(self):
         """
-        Methode für das entriegeln der Türe
-        Das ist nur möglich, wenn die Türe verriegelt ist.
-        Für das entriegeln ist aber das Türschloss zuständig. Es weiss wie das geht.
+        Methode für das Entriegeln der Türe
+        das ist nur möglich, wenn die Türe verriegelt ist.
+        Für das Entriegeln ist aber das Türschloss zuständig. Es weiß, wie das geht.
         """
         if self._door_is_locked:
             self._door_is_locked = self._the_door_lock.unlock()
@@ -105,9 +114,9 @@ class Door:
         self._color = new_color
 
 
-"""
-nur für die korrekte Übersetzung und Ausführung 
-"""
+# """
+# nur für die korrekte Übersetzung und Ausführung
+# """
 
 
 class DoorLock:
@@ -116,12 +125,25 @@ class DoorLock:
     """
 
     def __init__(self):
+        """
+        Initializes a new DoorLock instance.
+        """
         print("ein Schloss erzeugt")
 
+
     def lock(self):
+        """
+        Locks the door.
+        :return: True, indicating the door is locked.
+        """
         return True
 
+
     def unlock(self):
+        """
+        Unlocks the door.
+        :return: False, indicating the door is unlocked.
+        """
         return False
 
 
