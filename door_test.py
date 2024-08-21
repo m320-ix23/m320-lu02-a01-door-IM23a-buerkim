@@ -13,54 +13,54 @@ def a_door():
     return Door(DoorLock(), 'green')
 
 
-def test_initial(a_doora):
+def test_initial(a_door):
     """
     Test initialization
     """
-    assert a_doora.color == 'green'
+    assert a_door.color == 'green'
 
 
-def test_get_set_color(a_doorx):
+def test_get_set_color(a_door):
     """
     Testen der Tür farbe
     """
-    a_doorx.color = 'red'
-    assert a_doorx.color == 'red'
+    a_door.color = 'red'
+    assert a_door.color == 'red'
 
 
-def test_door_open(a_doorb):
+def test_door_open(a_door):
     """
     Testen der
     """
-    a_doorb.open_the_door()
-    assert a_doorb.door_is_open
+    a_door.open_the_door()
+    assert a_door.door_is_open
 
 
-def test_door_close(a_doorc):
-    """
-
-    :param a_doorc:
-    :return:
-    """
-    a_doorc.close_the_door()
-    assert a_doorc.door_is_open is False
-
-
-def test_door_locking(a_doord):
+def test_door_close(a_door):
     """
 
     :param a_door:
     :return:
     """
-    a_doord.lock_the_door()
-    assert a_doord._door_is_locked
+    a_door.close_the_door()
+    assert a_door.door_is_open is False
 
 
-def test_door_unlock(a_doore):
+def test_door_locking(a_door):
     """
 
     :param a_door:
     :return:
     """
-    a_doore.unlock_the_door()
-    assert a_doore._door_is_locked is False
+    a_door.lock_the_door()
+    assert a_door._door_is_locked
+
+
+def test_door_unlock(a_door):
+    """
+
+    :param a_door:
+    :return:
+    """
+    a_door.unlock_the_door()
+    assert a_door._door_is_locked is False
